@@ -37,3 +37,23 @@ def findSmallestAppealing(old_code: str, k: int) -> str:
         if is_attractive(current, k):
             return current
         current = generate_next_pattern(current, k)
+
+
+
+def getSmallerItems(items, start, end, query):
+    # Result array to store counts for each query
+    output = []
+    
+    # For each query value
+    for q in query:
+        count = 0
+        # Go through each order
+        for i in range(len(start)):
+            # Check each item in the range for this order
+            for j in range(start[i], end[i] + 1):
+                # If item value is less than query value, increment count
+                if items[j] < q:
+                    count += 1
+        output.append(count)
+    
+    return output
